@@ -107,15 +107,34 @@ unismp/
 
 ---
 
-## Seguridad (resumen)
+## Sostenibilidad
 
-- Solo claves **públicas** en el frontend (Supabase anon key, Cloudinary unsigned preset).
-- **RLS activado en todas las tablas** de Supabase; sin políticas → sin acceso.
-- Lógica inviolable en **Edge Functions**, nunca en el cliente.
-- `.env` fuera del repositorio (ver `.gitignore`).
+**Keep-alive** ([.github/workflows/keep-alive.yml](.github/workflows/keep-alive.yml)): el plan gratis
+de Supabase pausa el proyecto tras 7 días de inactividad. Un cron cada 3 días hace una consulta
+mínima para mantenerlo activo. Usa las Variables `VITE_SUPABASE_URL` y `VITE_SUPABASE_ANON_KEY`.
 
-La checklist completa de seguridad y sostenibilidad (keep-alive + backups) se documenta
-en el Paso 8.
+**Backups** ([.github/workflows/backup.yml](.github/workflows/backup.yml)): el plan gratis no incluye
+backups automáticos. Un cron semanal exporta esquema + datos y los sube como *artifact* descargable
+(retención 30 días). Requiere el **Secret** `SUPABASE_DB_URL` (cadena de conexión con contraseña).
+
+> Obtener `SUPABASE_DB_URL`: Supabase → Project Settings → Database → Connection string → URI.
+> Backup manual puntual: `supabase db dump --db-url "<URI>" -f backup.sql`.
+
+> ⚠️ Los workflows con `schedule` se desactivan si el repo queda 60 días sin actividad (aviso de
+> GitHub). Basta con re-activarlos desde la pestaña Actions.
+
+## Checklist de seguridad (antes de producción)
+
+- [x] Solo claves **públicas** en el frontend (anon key, unsigned preset).
+- [x] **RLS activado** en todas las tablas; sin políticas → sin acceso.
+- [x] Lógica inviolable en **Edge Functions** (`create-post` valida con `service_role`).
+- [x] `.env` y `.mcp.json` fuera del repositorio (`.gitignore`).
+- [x] Cloudinary: preset unsigned restringido (formato, dimensiones, carpeta) + validación 5 MB en cliente.
+- [x] CORS con allowlist en la Edge Function.
+- [x] Supabase Auth → Site URL y Redirect URLs configurados para el dominio de producción.
+- [ ] **Pendiente (al definir roles):** cerrar la política `community_posts_insert_demo`
+      (`WITH CHECK (true)`) y enrutar escrituras por la Edge Function.
+- [ ] **Pendiente:** rotar el Personal Access Token de Supabase si el chat de configuración se compartió.
 
 ---
 
@@ -127,5 +146,5 @@ en el Paso 8.
 - [x] Paso 4 — Clientes conectados (Supabase + Cloudinary)
 - [x] Paso 5 — Tabla de ejemplo + RLS + demo end-to-end
 - [x] Paso 6 — Edge Function de ejemplo (`create-post`)
-- [ ] Paso 7 — Despliegue a Firebase Hosting
-- [ ] Paso 8 — Keep-alive, backups y checklist de seguridad
+- [x] Paso 7 — Despliegue a Firebase Hosting
+- [x] Paso 8 — Keep-alive, backups y checklist de seguridad
