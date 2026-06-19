@@ -1,1 +1,1 @@
-{"root":["./src/main.tsx","./src/vite-env.d.ts","./src/lib/cloudinary.ts","./src/lib/env.ts","./src/lib/queryclient.ts","./src/lib/supabase.ts","./src/pages/homepage.tsx","./src/routes/router.tsx"],"version":"5.7.3"}
+{"root":["./src/main.tsx","./src/vite-env.d.ts","./src/features/demo/communitydemo.tsx","./src/features/demo/posts.ts","./src/lib/cloudinary.ts","./src/lib/env.ts","./src/lib/queryclient.ts","./src/lib/supabase.ts","./src/pages/homepage.tsx","./src/routes/router.tsx","./src/types/database.ts"],"version":"5.7.3"}

@@ -105,7 +105,7 @@ en el Paso 8.
 - [x] Paso 2 — Estructura del proyecto y configuración base
 - [x] Paso 3 — Inicialización de servicios (Firebase / Supabase / Cloudinary)
 - [x] Paso 4 — Clientes conectados (Supabase + Cloudinary)
-- [ ] Paso 5 — Tabla de ejemplo + RLS + demo end-to-end
+- [x] Paso 5 — Tabla de ejemplo + RLS + demo end-to-end
 - [ ] Paso 6 — Edge Function de ejemplo
 - [ ] Paso 7 — Despliegue a Firebase Hosting
 - [ ] Paso 8 — Keep-alive, backups y checklist de seguridad
