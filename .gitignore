@@ -42,3 +42,6 @@ firebase-debug.*.log
 supabase/.branches
 supabase/.temp
 supabase/.env
+
+# MCP config (contiene el access token)
+.mcp.json

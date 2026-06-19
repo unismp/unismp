@@ -77,7 +77,8 @@ unismp/
 │   └── vite-env.d.ts        # Tipos de import.meta.env
 ├── supabase/
 │   ├── migrations/          # Migraciones SQL (tablas + políticas RLS)
-│   └── functions/           # Edge Functions (lógica segura del servidor)
+│   └── functions/
+│       └── create-post/     # Edge Function: valida (Zod) e inserta con service_role
 ├── .env.example             # Plantilla de variables de entorno
 ├── eslint.config.js         # ESLint flat config
 ├── firebase.json            # (Paso 3) Config de Firebase Hosting
@@ -106,6 +107,6 @@ en el Paso 8.
 - [x] Paso 3 — Inicialización de servicios (Firebase / Supabase / Cloudinary)
 - [x] Paso 4 — Clientes conectados (Supabase + Cloudinary)
 - [x] Paso 5 — Tabla de ejemplo + RLS + demo end-to-end
-- [ ] Paso 6 — Edge Function de ejemplo
+- [x] Paso 6 — Edge Function de ejemplo (`create-post`)
 - [ ] Paso 7 — Despliegue a Firebase Hosting
 - [ ] Paso 8 — Keep-alive, backups y checklist de seguridad
