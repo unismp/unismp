@@ -54,6 +54,25 @@ npm run dev            # http://localhost:5173
 
 ---
 
+## Despliegue (Firebase Hosting)
+
+**Manual** (desde tu máquina):
+
+```bash
+npm run build
+firebase deploy --only hosting   # publica en https://unismp.web.app
+```
+
+**Automático** (GitHub Actions): cada push a `main` ejecuta
+[.github/workflows/firebase-hosting.yml](.github/workflows/firebase-hosting.yml), que compila y
+despliega al canal `live`. Requiere configurar en el repo de GitHub:
+
+- **Secret** `FIREBASE_SERVICE_ACCOUNT_UNISMP` → JSON de una cuenta de servicio de Firebase.
+- **Variables** (públicas): `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`,
+  `VITE_CLOUDINARY_CLOUD_NAME`, `VITE_CLOUDINARY_UPLOAD_PRESET`.
+
+---
+
 ## Estructura del proyecto
 
 ```
