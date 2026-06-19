@@ -65,9 +65,10 @@ unismp/
 │   ├── features/            # Módulos por dominio (se llenarán en la fase de funciones)
 │   ├── hooks/               # Custom hooks de React
 │   ├── lib/                 # Clientes e infraestructura
+│   │   ├── env.ts           #   Validación (Zod) de variables de entorno
 │   │   ├── queryClient.ts   #   Config de TanStack Query
-│   │   ├── supabase.ts      #   (Paso 4) Cliente Supabase tipado
-│   │   └── cloudinary.ts    #   (Paso 4) Helper de subida a Cloudinary
+│   │   ├── supabase.ts      #   Cliente Supabase
+│   │   └── cloudinary.ts    #   Subida + validación (tipo/5MB) + URLs optimizadas
 │   ├── pages/               # Vistas enrutadas
 │   ├── routes/              # Definición del router
 │   ├── styles/              # CSS global (entrada de Tailwind)
@@ -102,8 +103,8 @@ en el Paso 8.
 
 - [x] Paso 1 — Decisiones de arquitectura
 - [x] Paso 2 — Estructura del proyecto y configuración base
-- [ ] Paso 3 — Inicialización de servicios (Firebase / Supabase / Cloudinary)
-- [ ] Paso 4 — Clientes conectados (Supabase + Cloudinary)
+- [x] Paso 3 — Inicialización de servicios (Firebase / Supabase / Cloudinary)
+- [x] Paso 4 — Clientes conectados (Supabase + Cloudinary)
 - [ ] Paso 5 — Tabla de ejemplo + RLS + demo end-to-end
 - [ ] Paso 6 — Edge Function de ejemplo
 - [ ] Paso 7 — Despliegue a Firebase Hosting
